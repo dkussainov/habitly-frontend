@@ -24,7 +24,7 @@ function EditUser(props) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((updatedUser) => {
-          console.log(updatedUser);
+          props.setUser(updatedUser);
         });
         navigate("/");
       } else {

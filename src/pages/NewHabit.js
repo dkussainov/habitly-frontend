@@ -2,17 +2,17 @@ import DateTimePicker from "react-datetime-picker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function NewHabit({addHabit, user, setHabitsArray, habitsArray}) {
+function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
-    repeat: "Every day",
+    repeat: "Monday",
     goal: "1",
     times: "times",
     per: "per day",
     start_date: "",
   });
-  // console.log(formData);
+  console.log(formData);
   // console.log(addHabit);
 
   function handleChange(e) {
@@ -20,7 +20,6 @@ function NewHabit({addHabit, user, setHabitsArray, habitsArray}) {
     const keyName = e.target.name;
     setFormData({ ...formData, [keyName]: value });
   }
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,7 +36,7 @@ function NewHabit({addHabit, user, setHabitsArray, habitsArray}) {
       .then((r) => r.json())
       .then((habit) => {
         // addHabitHandler()
-        addHabit(habit)
+        addHabit(habit);
       });
     navigate("/");
   }
@@ -68,7 +67,8 @@ function NewHabit({addHabit, user, setHabitsArray, habitsArray}) {
         <label>Goal</label>
         <input
           type="number"
-          min={1}
+          min={0.1}
+          step={0.1}
           name="goal"
           placeholder="Select number"
           value={formData.number}

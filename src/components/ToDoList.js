@@ -35,7 +35,7 @@ function ToDoList() {
               className="text-red-500 hover:text-red-700"
               onClick={() => removeTask(index)}
             >
-              X
+              ❌
             </button>
           </li>
         ))}

@@ -1,4 +1,4 @@
-
+import NewHabit from "../pages/NewHabit";
 import { FaHandHoldingWater } from "react-icons/fa";
 import { GiMeditation, GiBodyBalance } from "react-icons/gi";
 import { BsWind } from "react-icons/bs";
@@ -6,7 +6,7 @@ import { ImSleepy } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { FcPlus } from "react-icons/fc";
 
-function Habits({ user }) {
+function Habits() {
   const navigate = useNavigate();
 
   function handleClick() {
@@ -17,7 +17,7 @@ function Habits({ user }) {
     <div class="grid h-1/2 place-items-center">
       <h2 style={{ marginBottom: "2%", marginTop: "2%" }}>Good to see you! </h2>
       <div class="grid grid-rows-3 grid-flow-col gap-4">
-        <div>
+        {/* <div>
           <button className="btn btn-active btn-ghost" onClick={handleClick}>
             <FaHandHoldingWater style={{ marginLeft: "1%" }} />
             Drink water
@@ -46,7 +46,7 @@ function Habits({ user }) {
             <ImSleepy style={{ marginLeft: "1%" }} />
             <h3>Take Power Naps</h3>
           </button>
-        </div>
+        </div> */}
         <div>
           <button className="btn btn-active btn-ghost" onClick={handleClick}>
             <FcPlus style={{ marginLeft: "1%" }} />

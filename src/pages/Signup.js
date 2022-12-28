@@ -133,7 +133,7 @@ function Signup({ setUser }) {
 
           <button
             type="submit"
-            className="btn btn-primary shadow-xl flex btn-success"
+            className="btn shadow-xl flex btn-success"
           >
             Sign Up
           </button>

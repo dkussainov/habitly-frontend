@@ -14,13 +14,11 @@ function App() {
   const [user, setUser] = useState(null);
   console.log("Current user:", user);
 
-
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((currentUser) => {
           setUser(currentUser);
-
         });
       }
     });
@@ -30,11 +28,12 @@ function App() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
-    
+
         navigate("/login");
       }
     });
   }
+
 
   // if (user === !user) {
   //   return <h1>loading...</h1>;
@@ -77,13 +76,15 @@ function App() {
             <Route
               path="/"
               element={<MainPage setUser={setUser} user={user} />}
-            />
+            >
+              <Route path="/new-habit" element={<NewHabit user={user} />} />
+
+            </Route>
           ) : (
             <Route path="/" element={<Login setUser={setUser} />} />
-            )}
+          )}
           <Route path="/habits" element={<Habits user={user} />} />
-          <Route path="/user/edit" element={<EditUser user={user} />} />
-            <Route path="/new-habit" element={<NewHabit user={user} />} />
+          <Route path="/user/edit" element={<EditUser user={user} setUser={setUser} />} />
         </Routes>
       </div>
     </div>

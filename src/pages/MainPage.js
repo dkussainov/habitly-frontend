@@ -19,7 +19,16 @@ function MainPage({ user }) {
   },[])
 
 
-
+  function updateHabits(updatedHabit) {
+    const updatedHabits = habitsArray.map((habit) => {
+      if (habit.id === updatedHabit.id) {
+        return updatedHabit;
+      } else {
+        return habit;
+      }
+    });
+    setHabitsArray(updatedHabits);
+  }
 
   function onDeleteHabit(deletedHabit) {
     const updateDelete = habitsArray.filter(habit => habit.id !== deletedHabit)
@@ -36,24 +45,27 @@ function MainPage({ user }) {
   return (
 
     <div>
-      <div class="relative h-96 ">
-        <div class="absolute inset-y-0 left-5 w-1/2 ">
+      <div class="flex-1">
+        <div class="my-8 mx-6 ">
           <ProfileCard user={user} />
         </div>
-        <div class="flex justify-end inset-0">
+        <div class="my-8 mx-6">
           <Habits />
         </div>
       </div>
-      <NewHabit addHabit={addHabit}/>
-      {/* <Routes>
+      {/* <NewHabit addHabit={addHabit}/> */}
+      <Routes>
 
         <Route path="/new-habit" element={<NewHabit addHabit={addHabit} />} /> 
-      </Routes> */}
-      <ul class="grid grid-rows-4 grid-flow-col gap-4">
-      {habitsArray.map(habit => <HabitCard habit={habit} key={habit.id} onDeleteHabit={onDeleteHabit}/>)}
-      </ul>
+      </Routes>
+      <div>
+      <div class="grid grid-rows gap-4 mx-6 w-1/2">
+      {habitsArray.map(habit => <HabitCard habit={habit} key={habit.id} onDeleteHabit={onDeleteHabit} updateHabits={updateHabits} />)}
+      </div>
       <div>
         <ToDoList />
+      </div>
+
       </div>
     </div>
   );

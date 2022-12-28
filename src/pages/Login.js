@@ -96,7 +96,7 @@ function Login({ setUser }) {
           </div>
           <button
             type="submit"
-            className="btn btn-primary shadow-xl flex btn-success"
+            className="btn shadow-xl flex btn-success"
           >
             Log In
           </button>
