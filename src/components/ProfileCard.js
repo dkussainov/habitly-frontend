@@ -2,7 +2,7 @@ import EditUser from "../pages/EditUser";
 import { useState } from "react";
 
 
-function ProfileCard({ user }) {
+function ProfileCard({ user, setUser }) {
   const [editButton, setEditButton] = useState(false);
 
 
@@ -33,6 +33,7 @@ function ProfileCard({ user }) {
           trigger={editButton}
           setEditButton={setEditButton}
           user={user}
+          setUser={setUser}
         />
       </div>
     </div>

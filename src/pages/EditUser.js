@@ -54,8 +54,8 @@ function EditUser(props) {
           onChange={handleChange}
           className="border border-gray-700 p-2 rounded mb-5"
         />
-        <label className="text-center text-gray-700">Profile photo</label>
-        <input type="file" name="photo" className="border border-gray-700 p-2 rounded mb-5"/>
+        <label className="text-center text-gray-700">Picture</label>
+        <input type="file" name="picture" className="border border-gray-700 p-2 rounded mb-5"/>
         <button type="submit" className="px-5 py-2 bg-gray-700 text-white rounded">Submit</button>
       </form>
       <div className="">

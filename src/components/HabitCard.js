@@ -84,6 +84,7 @@ function HabitCard({ habit, onDeleteHabit, updateHabits }) {
           {((habit.progress * 100) / parseFloat(habit.goal)).toFixed(0)}%
         </div>
       </div>
+      <button class="btn btn-ghost">Set Reminder</button>
     </div>
   );
 }

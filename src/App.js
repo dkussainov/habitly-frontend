@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { useState, useEffect } from "react";
 import MainPage from "./pages/MainPage";
-import Habits from "./components/Habits";
+
 import EditUser from "./pages/EditUser";
 import NewHabit from "./pages/NewHabit";
 
@@ -33,7 +33,6 @@ function App() {
       }
     });
   }
-
 
   // if (user === !user) {
   //   return <h1>loading...</h1>;
@@ -76,15 +75,13 @@ function App() {
             <Route
               path="/"
               element={<MainPage setUser={setUser} user={user} />}
-            >
-              <Route path="/new-habit" element={<NewHabit user={user} />} />
-
-            </Route>
+            />
           ) : (
-            <Route path="/" element={<Login setUser={setUser} />} />
+            <Route path="/login" element={<Login setUser={setUser} />} />
           )}
-          <Route path="/habits" element={<Habits user={user} />} />
-          <Route path="/user/edit" element={<EditUser user={user} setUser={setUser} />} />
+
+          <Route path="/user/edit" element={<EditUser />} />
+          <Route path="/new-habit" element={<NewHabit user={user} />} />
         </Routes>
       </div>
     </div>
