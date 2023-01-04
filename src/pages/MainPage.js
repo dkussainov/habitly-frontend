@@ -5,7 +5,6 @@ import ProfileCard from "../components/ProfileCard";
 import ToDoList from "../components/ToDoList";
 import HabitCard from "../components/HabitCard";
 import NewHabit from "./NewHabit";
-import AlarmClock from "../components/AlarmClock";
 import { FcPlus } from "react-icons/fc";
 
 function MainPage({ user, setUser }) {
@@ -15,8 +14,11 @@ function MainPage({ user, setUser }) {
     setShow(!show);
   }
 
+  const [time, setTime] = useState(new Date().toLocaleTimeString("en-SE"));
+  console.log("Time:", time);
+
   const [habitsArray, setHabitsArray] = useState([]);
-  console.log("HABITS ARRAY:", habitsArray);
+  // console.log("HABITS ARRAY:", habitsArray);
 
   useEffect(() => {
     fetch(`/users/${user.id}/habits`)
@@ -49,19 +51,23 @@ function MainPage({ user, setUser }) {
 
   return (
     <div>
+      {time}
       <div class="flex-1">
         <div class="my-8 mx-6 ">
           <ProfileCard user={user} setUser={setUser} />
         </div>
-        <div>
+        <div class="flex justify-center">
           <button className="btn btn-active btn-ghost" onClick={handleClick}>
             <FcPlus style={{ marginLeft: "1%" }} />
             <h3>Create New Habit</h3>
           </button>
         </div>
       </div>
-      {show === true ? <NewHabit addHabit={addHabit} /> : <br></br>}
-
+      <br></br>
+      <div class="flex justify-center">
+        {show === true ? <NewHabit addHabit={addHabit} /> : <br></br>}
+      </div>
+      <br></br>
       <div>
         <div class="grid grid-rows gap-4 mx-6 w-1/2">
           {habitsArray.map((habit) => (
@@ -70,13 +76,14 @@ function MainPage({ user, setUser }) {
               key={habit.id}
               onDeleteHabit={onDeleteHabit}
               updateHabits={updateHabits}
+              setTime={setTime}
+              time={time}
             />
           ))}
         </div>
         <div>
           <ToDoList />
         </div>
-        <AlarmClock />
       </div>
     </div>
   );

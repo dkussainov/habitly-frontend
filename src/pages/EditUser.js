@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function EditUser(props) {
   const [userForm, setUserForm] = useState({});
-  console.log("UserEditForm:", userForm);
+  // console.log("UserEditForm:", userForm);
 
   const navigate = useNavigate();
 

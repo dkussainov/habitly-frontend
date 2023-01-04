@@ -12,7 +12,7 @@ function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
     per: "per day",
     start_date: "",
   });
-  console.log(formData);
+  // console.log(formData);
   // console.log(addHabit);
 
   function handleChange(e) {
@@ -38,14 +38,12 @@ function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
         // addHabitHandler()
         addHabit(habit);
       });
-    navigate("/");
   }
 
   return (
-    <div class="border-2">
-      <h1>Create Habit</h1>
+    <div class="flex justify-center border border-success text-lg text-start w-1/2 rounded-lg shadow-2xl">
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Name</label>
         <input
           type="text"
           name="name"
@@ -53,7 +51,7 @@ function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
           value={formData.name}
           onChange={handleChange}
         ></input>
-        <label>Repeat</label>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Repeat</label>
         <select value={formData.repeat} name="repeat" onChange={handleChange}>
           <option value="Every Day">Every Day</option>
           <option value="Monday">Monday</option>
@@ -64,7 +62,7 @@ function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
           <option value="Saturday">Saturday</option>
           <option value="Sunday">Sunday</option>
         </select>
-        <label>Goal</label>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Goal</label>
         <input
           type="number"
           min={0.1}
@@ -103,7 +101,7 @@ function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
           <option value="per week">per week</option>
           <option value="per month">per month</option>
         </select>
-        <label>Reminders</label>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Start Date</label>
         <DateTimePicker
           placeholder="Choose the date and time"
           name="date"
@@ -111,7 +109,7 @@ function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
           value={formData.start_date}
           onChange={(e) => setFormData({ ...formData, start_date: e })}
         />
-        <button type="submit">Submit</button>
+        <button class="btn btn-success" type="submit">Submit</button>
       </form>
     </div>
   );

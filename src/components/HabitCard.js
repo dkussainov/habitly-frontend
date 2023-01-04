@@ -1,10 +1,12 @@
 import { React, useState } from "react";
+import AlarmClock from "./AlarmClock";
+import moment from "moment";
 
-function HabitCard({ habit, onDeleteHabit, updateHabits }) {
+function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
   const [show, setShow] = useState(false);
+  const [showAlarm, setShowAlarm] = useState(false);
 
   const [progress, setProgress] = useState();
-  console.log(progress);
 
   function openProgressForm() {
     setShow(!show);
@@ -33,8 +35,6 @@ function HabitCard({ habit, onDeleteHabit, updateHabits }) {
       });
   }
 
-  console.log(habit);
-
   return (
     <div class="relative">
       <div class="border border-success text-lg text-start rounded-lg shadow-2xl">
@@ -42,6 +42,7 @@ function HabitCard({ habit, onDeleteHabit, updateHabits }) {
         <h1>Repeat: {habit.repeat}</h1>
         <h1>Goal: {habit.goal}</h1>
         <h1>Start date: {habit.start_date.substring(0, 10)}</h1>
+        <h1>Reminder: {moment(habit.riminders[0].time).format("HH:mm:ss")} </h1>
       </div>
       <div class="absolute top-1 right-1">
         <button class="btn btn-ghost" onClick={openProgressForm}>
@@ -68,7 +69,7 @@ function HabitCard({ habit, onDeleteHabit, updateHabits }) {
           <br></br>
         )}
         <button class="btn btn-ghost" onClick={handleDelete}>
-          Quit habit ❌ 
+          Quit habit ❌
         </button>
       </div>
       <div class="absolute top-4 left-96">
@@ -84,7 +85,22 @@ function HabitCard({ habit, onDeleteHabit, updateHabits }) {
           {((habit.progress * 100) / parseFloat(habit.goal)).toFixed(0)}%
         </div>
       </div>
-      <button class="btn btn-ghost">Set Reminder</button>
+      <button class="btn btn-ghost" onClick={() => setShowAlarm(!showAlarm)}>
+        Set Reminder
+      </button>
+      <div>
+        {showAlarm === true ? (
+          <AlarmClock
+            habit={habit}
+            updateHabits={updateHabits}
+            setShowAlarm={setShowAlarm}
+            setTime={setTime}
+            time={time}
+          />
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }

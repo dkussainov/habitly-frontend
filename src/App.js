@@ -34,9 +34,9 @@ function App() {
     });
   }
 
-  // if (user === !user) {
-  //   return <h1>loading...</h1>;
-  // }
+  if (user === null) {
+    return <h1>loading...</h1>;
+  }
 
   return (
     <div class="flex-auto">
@@ -81,7 +81,7 @@ function App() {
           )}
 
           <Route path="/user/edit" element={<EditUser />} />
-          <Route path="/new-habit" element={<NewHabit user={user} />} />
+          {/* <Route path="/new-habit" element={<NewHabit user={user} />} /> */}
         </Routes>
       </div>
     </div>
