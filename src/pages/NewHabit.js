@@ -2,7 +2,7 @@ import DateTimePicker from "react-datetime-picker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
+function NewHabit({ addHabit, setShow, show}) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -37,6 +37,7 @@ function NewHabit({ addHabit, user, setHabitsArray, habitsArray }) {
       .then((habit) => {
         // addHabitHandler()
         addHabit(habit);
+        setShow(!show);
       });
   }
 

@@ -35,7 +35,7 @@ function App() {
   }
 
   if (user === null) {
-    return <h1>loading...</h1>;
+    <h1>loading...</h1>;
   }
 
   return (
@@ -53,6 +53,9 @@ function App() {
               </Link>
             )}
           </a>
+        </div>
+        <div>
+          <NavBar />
         </div>
         <div className="navbar-end">
           <button onClick={handleClick} className="btn btn-outline btn-success">

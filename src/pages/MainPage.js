@@ -1,6 +1,7 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProfileCard from "../components/ProfileCard";
+import moment from "moment";
 
 import ToDoList from "../components/ToDoList";
 import HabitCard from "../components/HabitCard";
@@ -14,8 +15,12 @@ function MainPage({ user, setUser }) {
     setShow(!show);
   }
 
-  const [time, setTime] = useState(new Date().toLocaleTimeString("en-SE"));
+  const [time, setTime] = useState(new Date().toLocaleTimeString("it-IT"));
   console.log("Time:", time);
+
+  const interval = setInterval(() => {
+    setTime(new Date().toLocaleTimeString("it-IT"));
+  }, 1000);
 
   const [habitsArray, setHabitsArray] = useState([]);
   // console.log("HABITS ARRAY:", habitsArray);
@@ -45,13 +50,11 @@ function MainPage({ user, setUser }) {
   }
 
   function addHabit(newHabit) {
-    console.log("in add Habit function");
     setHabitsArray([...habitsArray, newHabit]);
   }
 
   return (
     <div>
-      {time}
       <div class="flex-1">
         <div class="my-8 mx-6 ">
           <ProfileCard user={user} setUser={setUser} />
@@ -60,12 +63,18 @@ function MainPage({ user, setUser }) {
           <button className="btn btn-active btn-ghost" onClick={handleClick}>
             <FcPlus style={{ marginLeft: "1%" }} />
             <h3>Create New Habit</h3>
+
+            {time.substring(0, 5)}
           </button>
         </div>
       </div>
       <br></br>
       <div class="flex justify-center">
-        {show === true ? <NewHabit addHabit={addHabit} /> : <br></br>}
+        {show === true ? (
+          <NewHabit addHabit={addHabit} setShow={setShow} show={show} />
+        ) : (
+          <br></br>
+        )}
       </div>
       <br></br>
       <div>

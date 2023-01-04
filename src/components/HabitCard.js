@@ -2,9 +2,14 @@ import { React, useState } from "react";
 import AlarmClock from "./AlarmClock";
 import moment from "moment";
 
+
 function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
   const [show, setShow] = useState(false);
   const [showAlarm, setShowAlarm] = useState(false);
+  // const [reminder, setReminder] = useState(habit.riminders[0].time);
+  if (moment(habit.riminders[0].time).format("HH:mm:ss") === time) {
+    alert(`${habit.name}, please!`);
+  }
 
   const [progress, setProgress] = useState();
 
@@ -36,18 +41,22 @@ function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
   }
 
   return (
+    
     <div class="relative">
-      <div class="border border-success text-lg text-start rounded-lg shadow-2xl">
+      <div class="border border-success text-lg text-center rounded-lg shadow-2xl">
         <h1>Name: {habit.name}</h1>
         <h1>Repeat: {habit.repeat}</h1>
         <h1>Goal: {habit.goal}</h1>
         <h1>Start date: {habit.start_date.substring(0, 10)}</h1>
-        <h1>Reminder: {moment(habit.riminders[0].time).format("HH:mm:ss")} </h1>
+        {/* <h1>Reminder: {moment(habit.riminders[0].time).format("HH:mm:ss")} </h1> */}
+        <button class="btn btn-ghost" onClick={()=>setShowAlarm(!showAlarm)}>Reminder: {moment(habit.riminders[0].time).format("HH:mm:ss")}</button>
+
       </div>
       <div class="absolute top-1 right-1">
         <button class="btn btn-ghost" onClick={openProgressForm}>
           Add progress ⚡️
         </button>
+
         {show === true ? (
           <div>
             <form onSubmit={handleSubmitProgress}>
@@ -72,7 +81,7 @@ function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
           Quit habit ❌
         </button>
       </div>
-      <div class="absolute top-4 left-96">
+      <div class="absolute top-7 left-24">
         <div
           className="radial-progress text-green-500"
           style={{
@@ -85,22 +94,15 @@ function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
           {((habit.progress * 100) / parseFloat(habit.goal)).toFixed(0)}%
         </div>
       </div>
-      <button class="btn btn-ghost" onClick={() => setShowAlarm(!showAlarm)}>
-        Set Reminder
-      </button>
-      <div>
-        {showAlarm === true ? (
-          <AlarmClock
+  
+         {showAlarm === true ? <AlarmClock
             habit={habit}
             updateHabits={updateHabits}
             setShowAlarm={setShowAlarm}
             setTime={setTime}
             time={time}
-          />
-        ) : (
-          <></>
-        )}
-      </div>
+         
+          /> : null}
     </div>
   );
 }
