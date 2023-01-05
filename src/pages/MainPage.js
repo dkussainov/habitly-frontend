@@ -56,19 +56,24 @@ function MainPage({ user, setUser }) {
   return (
     <div>
       <div class="flex-1">
-        <div class="my-8 mx-6 ">
+        <div class="my-8 mx-6 p-4">
           <ProfileCard user={user} setUser={setUser} />
         </div>
-        <div class="flex justify-center">
-          <button className="btn btn-active btn-ghost" onClick={handleClick}>
-            <FcPlus style={{ marginLeft: "1%" }} />
-            <h3>Create New Habit</h3>
 
-            {time.substring(0, 5)}
+        <div class="flex justify-center">
+          <button
+            className="btn btn-active btn-ghost w-1/3"
+            onClick={handleClick}
+          >
+            <FcPlus style={{ marginLeft: "1%" }} />
+            <h3 style={{ marginLeft: "1%" }} class="text-green-700">Create New Habit</h3>
+            <h3 style={{ marginLeft: "1%" }} class="text-blue-600" >{time.substring(0, 5)}</h3>
           </button>
         </div>
       </div>
+
       <br></br>
+
       <div class="flex justify-center">
         {show === true ? (
           <NewHabit addHabit={addHabit} setShow={setShow} show={show} />
@@ -77,8 +82,8 @@ function MainPage({ user, setUser }) {
         )}
       </div>
       <br></br>
-      <div>
-        <div class="grid grid-rows gap-4 mx-6 w-1/2">
+      <div class="">
+        <div class="flex flex-col gap-6 w-2/4 justify-center float-left p-10">
           {habitsArray.map((habit) => (
             <HabitCard
               habit={habit}
@@ -90,8 +95,8 @@ function MainPage({ user, setUser }) {
             />
           ))}
         </div>
-        <div>
-          <ToDoList />
+        <div class="flex flex-col gap-6 w-2/4 justify-center p-10">
+          <ToDoList user={user} setUser={setUser} time={time} />
         </div>
       </div>
     </div>

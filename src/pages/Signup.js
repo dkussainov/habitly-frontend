@@ -59,7 +59,7 @@ function Signup({ setUser }) {
         <h1 class="text-success pt-16 font-inherit">SIGN UP</h1>
         <form class="px-3" onSubmit={handleSubmit}>
           <label className="label">
-            <span className="label-text text-success">Username</span>
+            <span className="label-text text-success after:content-['*'] after:ml-0.5 after:text-red-500">Username</span>
           </label>
           <input
             type="text"
@@ -70,7 +70,7 @@ function Signup({ setUser }) {
             name="username"
           />
           <label className="label">
-            <span className="label-text text-success">Email</span>
+            <span className="label-text text-success after:content-['*'] after:ml-0.5 after:text-red-500">Email</span>
           </label>
           <input
             type="text"
@@ -81,7 +81,7 @@ function Signup({ setUser }) {
             name="email"
           />
           <label className="label">
-            <span className="label-text text-success">Password</span>
+            <span className="label-text text-success after:content-['*'] after:ml-0.5 after:text-red-500">Password</span>
           </label>
           <div className="relative">
             <div className="w-full">
@@ -103,7 +103,7 @@ function Signup({ setUser }) {
             </div>
           </div>
           <label className="label">
-            <span className="label-text text-success">
+            <span className="label-text text-success after:content-['*'] after:ml-0.5 after:text-red-500">
               Password confirmation
             </span>
           </label>

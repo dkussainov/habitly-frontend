@@ -7,6 +7,8 @@ import MainPage from "./pages/MainPage";
 
 import EditUser from "./pages/EditUser";
 import NewHabit from "./pages/NewHabit";
+import ProfileCard from "./components/ProfileCard";
+import ToDoList from "./components/ToDoList";
 
 function App() {
   const navigate = useNavigate();
@@ -39,53 +41,67 @@ function App() {
   }
 
   return (
-    <div class="flex-auto">
-      <div className="navbar">
-        <div className="navbar-start">
-          <a className="btn btn-ghost normal-case text-xl">
-            {user ? (
-              <Link to="/" className="logo text-success">
-                Habitly
-              </Link>
-            ) : (
-              <Link className="logo text-success" to="/login">
-                Habitly
-              </Link>
-            )}
-          </a>
+    <div
+      style={{
+
+      }}
+    >
+      <div class="flex-auto">
+        <div className="navbar">
+          <div className="navbar-start">
+            <a className="btn btn-ghost normal-case text-xl">
+              {user ? (
+                <Link to="/" className="logo text-success">
+                  Habitly
+                </Link>
+              ) : (
+                <Link className="logo text-success" to="/login">
+                  Habitly
+                </Link>
+              )}
+            </a>
+          </div>
+          <div>{/* <NavBar /> */}</div>
+          <div className="navbar-end">
+            <button
+              onClick={handleClick}
+              className="btn btn-outline btn-success"
+            >
+              {user ? (
+                <div>
+                  <button>Logout</button>
+                </div>
+              ) : (
+                <button>Log In</button>
+              )}
+            </button>
+          </div>
         </div>
         <div>
-          <NavBar />
-        </div>
-        <div className="navbar-end">
-          <button onClick={handleClick} className="btn btn-outline btn-success">
-            {user ? (
-              <div>
-                <button>Logout</button>
-              </div>
-            ) : (
-              <button>Log In</button>
-            )}
-          </button>
-        </div>
-      </div>
-      <div>
-        {/* {user ? <NavBar /> : <></>} */}
-        <Routes>
-          <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/signup" element={<Signup setUser={setUser} />} />
-          {user ? (
-            <Route
-              path="/"
-              element={<MainPage setUser={setUser} user={user} />}
-            />
-          ) : (
+          {/* {user ? <NavBar /> : <></>} */}
+          <Routes>
             <Route path="/login" element={<Login setUser={setUser} />} />
-          )}
+            <Route path="/signup" element={<Signup setUser={setUser} />} />
+            {user ? (
+              <Route
+                path="/"
+                element={<MainPage setUser={setUser} user={user} />}
+              />
+            ) : (
+              <Route path="/login" element={<Login setUser={setUser} />} />
+            )}
 
-          <Route path="/user/edit" element={<EditUser />} />
-          {/* <Route path="/new-habit" element={<NewHabit user={user} />} /> */}
-        </Routes>
+            <Route path="/user/edit" element={<EditUser />} />
+            <Route
+              path="/profile"
+              element={<ProfileCard user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/todos"
+              element={<ToDoList user={user} setUser={setUser} />}
+            />
+          </Routes>
+        </div>
       </div>
     </div>
   );

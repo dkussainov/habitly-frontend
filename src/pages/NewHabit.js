@@ -42,18 +42,19 @@ function NewHabit({ addHabit, setShow, show}) {
   }
 
   return (
-    <div class="flex justify-center border border-success text-lg text-start w-1/2 rounded-lg shadow-2xl">
+    <div class="flex justify-center border border-success text-lg text-start w-1/3 rounded-lg shadow-2xl">
       <form onSubmit={handleSubmit}>
-        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Name</label>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-blue-700">Name</label>
         <input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder="Habit name"
           value={formData.name}
           onChange={handleChange}
+          class='border border-success w-full'
         ></input>
-        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Repeat</label>
-        <select value={formData.repeat} name="repeat" onChange={handleChange}>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-blue-700">Repeat</label>
+        <select value={formData.repeat} name="repeat" onChange={handleChange} class='border border-success w-full'>
           <option value="Every Day">Every Day</option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -63,7 +64,7 @@ function NewHabit({ addHabit, setShow, show}) {
           <option value="Saturday">Saturday</option>
           <option value="Sunday">Sunday</option>
         </select>
-        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Goal</label>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-blue-700">Goal</label>
         <input
           type="number"
           min={0.1}
@@ -72,8 +73,9 @@ function NewHabit({ addHabit, setShow, show}) {
           placeholder="Select number"
           value={formData.number}
           onChange={handleChange}
+          class='border border-success'
         />
-        <select value={formData.times} name="times" onChange={handleChange}>
+        <select value={formData.times} name="times" onChange={handleChange} class='border border-success'>
           <option value="times">times</option>
           <option value="min">min</option>
           <option value="hours">hours</option>
@@ -97,12 +99,12 @@ function NewHabit({ addHabit, setShow, show}) {
           <option value="yerds">yards</option>
           <option value="miles">miles</option>
         </select>
-        <select value={formData.per} name="per" onChange={handleChange}>
+        <select value={formData.per} name="per" onChange={handleChange} class='border border-success'>
           <option value="per day">per day</option>
           <option value="per week">per week</option>
           <option value="per month">per month</option>
         </select>
-        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-slate-700">Start Date</label>
+        <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-blue-700">Start Date</label>
         <DateTimePicker
           placeholder="Choose the date and time"
           name="date"
@@ -110,7 +112,7 @@ function NewHabit({ addHabit, setShow, show}) {
           value={formData.start_date}
           onChange={(e) => setFormData({ ...formData, start_date: e })}
         />
-        <button class="btn btn-success" type="submit">Submit</button>
+        <button class="bg-blue-500 rounded py-1 px-3 text-white font-bold" type="submit">Submit</button>
       </form>
     </div>
   );

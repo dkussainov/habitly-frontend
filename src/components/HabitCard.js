@@ -8,7 +8,7 @@ function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
   const [showAlarm, setShowAlarm] = useState(false);
   // const [reminder, setReminder] = useState(habit.riminders[0].time);
   if (moment(habit.riminders[0].time).format("HH:mm:ss") === time) {
-    alert(`${habit.name}, please!`);
+    alert(`Habit alert: Time to ${habit.name}!`);
   }
 
   const [progress, setProgress] = useState();
@@ -43,13 +43,13 @@ function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
   return (
     
     <div class="relative">
-      <div class="border border-success text-lg text-center rounded-lg shadow-2xl">
-        <h1>Name: {habit.name}</h1>
-        <h1>Repeat: {habit.repeat}</h1>
+      <div class="border border-success text-xl text-center rounded-lg shadow-2xl text-cyan-600">
+        <h1 class='text-blue-600'>{habit.name}</h1>
+        <h1> {habit.repeat}</h1>
         <h1>Goal: {habit.goal}</h1>
         <h1>Start date: {habit.start_date.substring(0, 10)}</h1>
         {/* <h1>Reminder: {moment(habit.riminders[0].time).format("HH:mm:ss")} </h1> */}
-        <button class="btn btn-ghost" onClick={()=>setShowAlarm(!showAlarm)}>Reminder: {moment(habit.riminders[0].time).format("HH:mm:ss")}</button>
+        <button class="btn btn-ghost text-green-600" onClick={()=>setShowAlarm(!showAlarm)}>Reminder: {moment(habit.riminders[0].time).format("HH:mm:ss")}</button>
 
       </div>
       <div class="absolute top-1 right-1">
