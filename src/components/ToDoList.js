@@ -46,7 +46,7 @@ function ToDoList({ user, time }) {
       <h1 className="text-3xl font-bold mb-4 text-blue-500">To Do List</h1>
       <form className="mb-4" onSubmit={handleNewToDo}>
         <input
-          className="border rounded border-blue-500 py-2 px-3"
+          className="border rounded border-blue-500 py-2 px-3 bg-slate-50"
           type="text"
           name="task"
           value={taskForm}

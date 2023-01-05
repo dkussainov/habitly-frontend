@@ -29,7 +29,7 @@ function ToDo({ todo, onDeleteToDo, updateToDoList, time }) {
     setShowAlarm(false);
   }
   return (
-    <div class="flex justify-evenly">
+    <div class="flex justify-evenly bg-slate-100">
       <h1 class="text-xl w-1/5 text-left text-red-600 my-2">{todo.title}</h1>
       <button class="btn btn-ghost text-green-600" onClick={() => setShowAlarm(!showAlarm)}>
         Reminder: {moment(todo.time).format("HH:mm")}

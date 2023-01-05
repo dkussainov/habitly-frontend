@@ -42,7 +42,7 @@ function HabitCard({ habit, onDeleteHabit, updateHabits, setTime, time }) {
 
   return (
     
-    <div class="relative">
+    <div class="relative bg-slate-100">
       <div class="border border-success text-xl text-center rounded-lg shadow-2xl text-cyan-600">
         <h1 class='text-blue-600'>{habit.name}</h1>
         <h1> {habit.repeat}</h1>

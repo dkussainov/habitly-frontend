@@ -42,7 +42,7 @@ function NewHabit({ addHabit, setShow, show}) {
   }
 
   return (
-    <div class="flex justify-center border border-success text-lg text-start w-1/3 rounded-lg shadow-2xl">
+    <div class="flex justify-center border border-success text-lg text-start w-1/3 rounded-lg shadow-2xl bg-slate-100">
       <form onSubmit={handleSubmit}>
         <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-blue-700">Name</label>
         <input
@@ -51,10 +51,10 @@ function NewHabit({ addHabit, setShow, show}) {
           placeholder="Habit name"
           value={formData.name}
           onChange={handleChange}
-          class='border border-success w-full'
+          class='border border-success w-full input input-bordered border-success w-full max-w-xs bg-slate-100'
         ></input>
         <label class="after:content-['*'] after:ml-0.5 after:text-red-500 block font-medium text-blue-700">Repeat</label>
-        <select value={formData.repeat} name="repeat" onChange={handleChange} class='border border-success w-full'>
+        <select value={formData.repeat} name="repeat" onChange={handleChange} class='border border-success w-full input bg-slate-100  input-bordered border-success w-full max-w-xs'>
           <option value="Every Day">Every Day</option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -73,9 +73,9 @@ function NewHabit({ addHabit, setShow, show}) {
           placeholder="Select number"
           value={formData.number}
           onChange={handleChange}
-          class='border border-success'
+          class='border border-success input input-bordered border-success w-full max-w-xs bg-slate-100 '
         />
-        <select value={formData.times} name="times" onChange={handleChange} class='border border-success'>
+        <select value={formData.times} name="times" onChange={handleChange} class='border border-success input input-bordered border-success w-full bg-slate-100 max-w-xs'>
           <option value="times">times</option>
           <option value="min">min</option>
           <option value="hours">hours</option>
@@ -99,7 +99,7 @@ function NewHabit({ addHabit, setShow, show}) {
           <option value="yerds">yards</option>
           <option value="miles">miles</option>
         </select>
-        <select value={formData.per} name="per" onChange={handleChange} class='border border-success'>
+        <select value={formData.per} name="per" onChange={handleChange} class='border border-success input input-bordered border-success bg-slate-100 '>
           <option value="per day">per day</option>
           <option value="per week">per week</option>
           <option value="per month">per month</option>

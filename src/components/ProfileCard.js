@@ -16,8 +16,8 @@ function ProfileCard({ user, setUser }) {
         </div>
 
         <div className="absolute top-1 right-24 card-body text-center items-center">
-          <h2 className="absolute top-1 card-title flex-auto">{user.username}</h2>
-          <p class="absolute italic">{user.email}</p>
+          <h2 className="absolute top-1 card-title flex-auto text-cyan-500 text-2xl">{user.username}</h2>
+          <p class="absolute italic text-violet-700">{user.email}</p>
           <div className="card-actions">
             <button
             class="absolute top-1 left-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"

@@ -70,6 +70,7 @@ function MainPage({ user, setUser }) {
             <h3 style={{ marginLeft: "1%" }} class="text-blue-600" >{time.substring(0, 5)}</h3>
           </button>
         </div>
+        
       </div>
 
       <br></br>
