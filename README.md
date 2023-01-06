@@ -1,7 +1,7 @@
 You must have React JS
 
-Fork the Repo and Clone
-cd into app directory
-run "npm install"
-start compiling by running "npm start" command
-open the http://localhost:4000/ in your browser
+1. Fork the Repo and Clone
+2. cd into app directory
+3. run "npm install"
+4. start compiling by running "npm start" command
+5. open the http://localhost:4000/ in your browser
